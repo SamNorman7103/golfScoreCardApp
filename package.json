@@ -1,0 +1,19 @@
+{
+  "name": "golfscorecardapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass" : "sass --watch src/styles:public/stylesheets"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamNorman7103/golfScoreCardApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamNorman7103/golfScoreCardApp/issues"
+  },
+  "homepage": "https://github.com/SamNorman7103/golfScoreCardApp#readme"
+}
