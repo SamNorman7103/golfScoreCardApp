@@ -3,91 +3,141 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./stylesheets/styles.css">
+    <link rel="stylesheet" href="./stylesheets/reset.css">
+    <link rel="stylesheet" href="./stylesheets/styles.css" />
     <title>Golf Score Card</title>
   </head>
   <body>
     <div id="main-card-container">
-      <div id="out-9">
-        <div class="flex">
-          <div class="grid-item hole-row-item">Hole</div>
-          <div id="hole-1" class="grid-item hole-row-item">1</div>
-          <div id="hole-2" class="grid-item hole-row-item">2</div>
-          <div id="hole-3" class="grid-item hole-row-item">3</div>
-          <div id="hole-4" class="grid-item hole-row-item">4</div>
-          <div id="hole-5" class="grid-item hole-row-item">5</div>
-          <div id="hole-6" class="grid-item hole-row-item">6</div>
-          <div id="hole-7" class="grid-item hole-row-item">7</div>
-          <div id="hole-8" class="grid-item hole-row-item">8</div>
-          <div id="hole-9" class="grid-item hole-row-item">9</div>
-          <div class="grid-item hole-row-item">Out</div>
-        </div>
-        <div id="par-row" class="flex">
-          <div class="grid-item par-row-item" id="label">Par</div>
-          <div id="par-1" class="grid-item par-row-item"></div>
-          <div id="par-2" class="grid-item par-row-item"></div>
-          <div id="par-3" class="grid-item par-row-item"></div>
-          <div id="par-4" class="grid-item par-row-item"></div>
-          <div id="par-5" class="grid-item par-row-item"></div>
-          <div id="par-6" class="grid-item par-row-item"></div>
-          <div id="par-7" class="grid-item par-row-item"></div>
-          <div id="par-8" class="grid-item par-row-item"></div>
-          <div id="par-9" class="grid-item par-row-item"></div>
-          <div id="out-par-total" class="grid-item par-row-item">Total</div>
-        </div>
-        <div id="out-yardage-row" class="flex">
-          <div class="grid-item yardage-row-item" id="label">Yards</div>
-          <div id="yardage-1" class="grid-item yardage-row-item"></div>
-          <div id="yardage-2" class="grid-item yardage-row-item"></div>
-          <div id="yardage-3" class="grid-item yardage-row-item"></div>
-          <div id="yardage-4" class="grid-item yardage-row-item"></div>
-          <div id="yardage-5" class="grid-item yardage-row-item"></div>
-          <div id="yardage-6" class="grid-item yardage-row-item"></div>
-          <div id="yardage-7" class="grid-item yardage-row-item"></div>
-          <div id="yardage-8" class="grid-item yardage-row-item"></div>
-          <div id="yardage-9" class="grid-item yardage-row-item"></div>
-          <div id="out-yardage-total" class="grid-item yardage-row-item">Total</div>
-        </div>
-      </div>
-      <div id="in-9">
-        <div class="flex">
-          <div id="hole-10" class="grid-item hole-row-item">10</div>
-          <div id="hole-11" class="grid-item hole-row-item">11</div>
-          <div id="hole-12" class="grid-item hole-row-item">12</div>
-          <div id="hole-13" class="grid-item hole-row-item">13</div>
-          <div id="hole-14" class="grid-item hole-row-item">14</div>
-          <div id="hole-15" class="grid-item hole-row-item">15</div>
-          <div id="hole-16" class="grid-item hole-row-item">16</div>
-          <div id="hole-17" class="grid-item hole-row-item">17</div>
-          <div id="hole-18" class="grid-item hole-row-item">18</div>
-          <div class="grid-item hole-row-item">In</div>
-        </div>
-        <div id="out-par-row" class="flex">
-          <div id="par-10" class="grid-item par-row-item"></div>
-          <div id="par-11" class="grid-item par-row-item"></div>
-          <div id="par-12" class="grid-item par-row-item"></div>
-          <div id="par-13" class="grid-item par-row-item"></div>
-          <div id="par-14" class="grid-item par-row-item"></div>
-          <div id="par-15" class="grid-item par-row-item"></div>
-          <div id="par-16" class="grid-item par-row-item"></div>
-          <div id="par-17" class="grid-item par-row-item"></div>
-          <div id="par-18" class="grid-item par-row-item"></div>
-          <div id="in-par-total" class="grid-item par-row-item">Total</div>
-        </div>
-        <div id="out-yardage-row" class="flex">
-          <div id="yardage-1" class="grid-item yardage-row-item"></div>
-          <div id="yardage-2" class="grid-item yardage-row-item"></div>
-          <div id="yardage-3" class="grid-item yardage-row-item"></div>
-          <div id="yardage-4" class="grid-item yardage-row-item"></div>
-          <div id="yardage-5" class="grid-item yardage-row-item"></div>
-          <div id="yardage-6" class="grid-item yardage-row-item"></div>
-          <div id="yardage-7" class="grid-item yardage-row-item"></div>
-          <div id="yardage-8" class="grid-item yardage-row-item"></div>
-          <div id="yardage-9" class="grid-item yardage-row-item"></div>
-          <div id="out-yardage-total" class="grid-item yardage-row-item">Total</div>
-        </div>
-      </div>
+      <table id="out-container">
+        <tr class="hole-row">
+          <td>Hole</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>Out</td>
+        </tr>
+        <tr class="par-row">
+          <td>Par</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="yardage-row">
+          <td>Yards</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="par-row">
+          <td><textarea name="" id="player-1" cols="15" rows="1" maxlength="15"></textarea></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr class="handicap-row">
+          <td>Handicap</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <table id="out-container">
+        <tr class="hole-row">
+          <td>10</td>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+          <td>15</td>
+          <td>16</td>
+          <td>17</td>
+          <td>18</td>
+          <td>In</td>
+        </tr>
+        <tr class="par-row">
+          <td>x</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="yardage-row">
+          <td>x</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="par-row">
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr class="handicap-row">
+          <td>X</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
     </div>
   </body>
-  <script type="text/javascript" src="./main.js"></script>
 </html>
