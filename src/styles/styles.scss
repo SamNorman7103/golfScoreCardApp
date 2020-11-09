@@ -29,12 +29,22 @@
   }
 }
 
-
+.hidden{
+  display: none;
+}
 
 
 @media screen and (max-width: 1000px) {
   #main-card-container {
     display: grid;
     grid-template-columns: 1fr;
+    border-color: red;
+    .hidden{
+      display: block;
+    }#out-container, #in-container{}
+    padding: 5px;
+    padding-top: 15px;
+    margin: 5px;
+
   }
 }

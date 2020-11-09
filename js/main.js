@@ -1,8 +1,7 @@
-let coursePromise = fetch("https://golf-courses-api.herokuapp.com/courses/").then((response) => response.json());
+const coursePromise = fetch("https://golf-courses-api.herokuapp.com/courses/").then((response) => response.json());
+const courseSelectContainer = document.getElementById("course-select");
 
 coursePromise.then((response) => printCourses(response));
-
-const courseSelectContainer = document.getElementById("course-select");
 
 function printCourses(data) {
   let html = `

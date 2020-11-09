@@ -29,10 +29,21 @@
   vertical-align: middle;
 }
 
+.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
   #main-card-container {
     display: grid;
     grid-template-columns: 1fr;
+    border-color: red;
+    padding: 5px;
+    padding-top: 15px;
+    margin: 5px;
+  }
+  #main-card-container .hidden {
+    display: block;
   }
 }
 
