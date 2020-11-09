@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="./stylesheets/styles.css" />
     <script defer src="../js/main.js"></script>
     <title>Golf Score Card</title>
-
   </head>
 
   <body>
@@ -54,6 +53,7 @@
             <td id="yards-out-total"></td>
           </tr>
         </tbody>
+        <tbody id="player-out-container"></tbody>
         <tbody>
           <tr class="handicap-row">
             <td>Hcap</td>
@@ -87,7 +87,7 @@
           </tr>
           <tr class="par-row">
             <td class="hidden">Par</td>
-            <td id="par-10">X</td>
+            <td id="par-10"></td>
             <td id="par-11"></td>
             <td id="par-12"></td>
             <td id="par-13"></td>
@@ -100,7 +100,7 @@
           </tr>
           <tr class="yardage-row">
             <td class="hidden">Yards</td>
-            <td id="yards-10">X</td>
+            <td id="yards-10"></td>
             <td id="yards-11"></td>
             <td id="yards-12"></td>
             <td id="yards-13"></td>
@@ -112,10 +112,11 @@
             <td id="yards-in-total"></td>
           </tr>
         </tbody>
+        <tbody id="player-in-container"></tbody>
         <tbody>
           <tr class="handicap-row">
             <td class="hidden">Hcap</td>
-            <td id="handicap-10">X</td>
+            <td id="handicap-10"></td>
             <td id="handicap-11"></td>
             <td id="handicap-12"></td>
             <td id="handicap-13"></td>
@@ -129,64 +130,55 @@
         </tbody>
       </table>
     </div>
-    <button>Add Player</button>
+    <button onclick="newPlayer()">Add Player</button>
     <div id="course-select"></div>
-    
-    
-    
-    
-    <template id='player-out-template'>
-      <tbody id="">
-        <tr id="" class="player-row">
-          <td>
-            <textarea
-              name=""
-              id="player-1"
-              cols="15"
-              rows="1"
-              maxlength="15"
-            ></textarea>
-          </td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-        </tr>
-      </tbody>
+
+    <template id="player-out-template">
+      <tr id="" class="player-row">
+        <td>
+          <textarea
+            name=""
+            id=""
+            cols="15"
+            rows="1"
+            maxlength="15"
+          ></textarea>
+        </td>
+        <td><input id="p-out-1" type="text" /></td>
+        <td><input id="p-out-2" type="text" /></td>
+        <td><input id="p-out-3" type="text" /></td>
+        <td><input id="p-out-4" type="text" /></td>
+        <td><input id="p-out-5" type="text" /></td>
+        <td><input id="p-out-6" type="text" /></td>
+        <td><input id="p-out-7" type="text" /></td>
+        <td><input id="p-out-8" type="text" /></td>
+        <td><input id="p-out-9" type="text" /></td>
+        <td><input id="p-out-total" type="text" /></td>
+      </tr>
     </template>
 
-    <template id='player-out-template'>
-      <tbody id="">
-        <tr id="" class="player-row">
-          <td>
-            <textarea
-              name=""
-              id="player-1"
-              cols="15"
-              rows="1"
-              maxlength="15"
-            ></textarea>
-          </td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-          <td><input type="text" /></td>
-        </tr>
-      </tbody>
+    <template id="player-in-template">
+      <tr class="player-row">
+        <td class="hidden">
+          <textarea
+            name=""
+            class="player-name"
+            cols="15"
+            rows="1"
+            maxlength="15"
+          ></textarea>
+        </td>
+        <td><input id="p-in-10" type="text" /></td>
+        <td><input id="p-in-11" type="text" /></td>
+        <td><input id="p-in-12" type="text" /></td>
+        <td><input id="p-in-13" type="text" /></td>
+        <td><input id="p-in-14" type="text" /></td>
+        <td><input id="p-in-15" type="text" /></td>
+        <td><input id="p-in-16" type="text" /></td>
+        <td><input id="p-in-17" type="text" /></td>
+        <td><input id="p-in-18" type="text" /></td>
+        <td><input id="p-in-total" type="text" /></td>
+      </tr>
     </template>
-    
   </body>
 </html>
-

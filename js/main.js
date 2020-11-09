@@ -1,5 +1,12 @@
-const coursePromise = fetch("https://golf-courses-api.herokuapp.com/courses/").then((response) => response.json());
+const coursePromise = fetch(
+  "https://golf-courses-api.herokuapp.com/courses/"
+).then((response) => response.json());
 const courseSelectContainer = document.getElementById("course-select");
+const playerOutTemplate = document.getElementById("player-out-template");
+const playerInTemplate = document.getElementById("player-in-template");
+const playerOutContainer = document.getElementById("player-out-container");
+const playerInContainer = document.getElementById("player-in-container");
+let playerCount = 0;
 
 coursePromise.then((response) => printCourses(response));
 
@@ -16,18 +23,18 @@ function printCourses(data) {
 function renderCourse(course) {
   if (course == 1) {
     coursePromise
-      .then((response) => getCourse(response.courses[0].id)
-      ).then((response) => renderCourseData(response.data.holes));
+      .then((response) => getCourse(response.courses[0].id))
+      .then((response) => renderCourseData(response.data.holes));
   }
   if (course == 2) {
     coursePromise
-      .then((response) => getCourse(response.courses[1].id)
-      ).then((response) => renderCourseData(response.data.holes));
+      .then((response) => getCourse(response.courses[1].id))
+      .then((response) => renderCourseData(response.data.holes));
   }
   if (course == 3) {
     coursePromise
-      .then((response) => getCourse(response.courses[2].id)
-      ).then((response) => renderCourseData(response.data.holes));
+      .then((response) => getCourse(response.courses[2].id))
+      .then((response) => renderCourseData(response.data.holes));
   }
 }
 
@@ -100,8 +107,30 @@ function renderCourseHandicap(holes) {
   handicapInTotal.innerText = inTotal;
 }
 
-function renderCourseData(holes){
-    renderCoursePar(holes);
-    renderCourseYards(holes);
-    renderCourseHandicap(holes);
+function renderCourseData(holes) {
+  renderCoursePar(holes);
+  renderCourseYards(holes);
+  renderCourseHandicap(holes);
+}
+
+function newPlayer() {
+  playerCount++;
+  const playerOutElement = document.importNode(playerOutTemplate.content, true);
+  const playerInElement = document.importNode(playerInTemplate.content, true);
+
+  playerOutContainer.appendChild(playerOutElement);
+  playerInContainer.appendChild(playerInElement);
+  const playerOutIdElement = playerOutContainer.querySelector('tr');
+  const playerInIdElement = playerInContainer.querySelector('tr');
+  playerOutIdElement.id = `player-${playerCount}`;
+  playerInIdElement.id = `player-${playerCount}`;
+}
+
+playerOutContainer.addEventListener("keyup", renderPlayerData);
+
+function renderPlayerData() {
+  for (let player = 1; player <= playerCount; player++) {
+    const playerElement = document.getElementById(`player-${player}`);
+    console.log(playerElement)
+  }
 }
