@@ -50,12 +50,12 @@ function renderCoursePar(holes) {
   const parOutTotal = document.getElementById("par-out-total");
   const parInTotal = document.getElementById("par-in-total");
   for (i = 0; i < holes.length; i++) {
-    if (i < 9) {
+    if (i <= 8) {
       const parElement = document.getElementById(`par-${i + 1}`);
       parElement.innerText = holes[i].teeBoxes[0].par;
       outTotal += holes[i].teeBoxes[0].par;
     }
-    if (i > 8) {
+    if (i >= 9) {
       const parElement = document.getElementById(`par-${i + 1}`);
       parElement.innerText = holes[i].teeBoxes[0].par;
       inTotal += holes[i].teeBoxes[0].par;
@@ -114,23 +114,55 @@ function renderCourseData(holes) {
 }
 
 function newPlayer() {
+  if(playerCount > 3){
+    console.log('Max Players reached');
+    return false;
+  }
   playerCount++;
   const playerOutElement = document.importNode(playerOutTemplate.content, true);
   const playerInElement = document.importNode(playerInTemplate.content, true);
 
   playerOutContainer.appendChild(playerOutElement);
   playerInContainer.appendChild(playerInElement);
-  const playerOutIdElement = playerOutContainer.querySelector('tr');
-  const playerInIdElement = playerInContainer.querySelector('tr');
+  const playerOutIdElement = playerOutContainer.querySelector(`tr:nth-of-type(${playerCount})`);
+  const playerInIdElement = playerInContainer.querySelector(`tr:nth-of-type(${playerCount})`);
   playerOutIdElement.id = `player-${playerCount}`;
   playerInIdElement.id = `player-${playerCount}`;
+  renderPlayerData(playerCount);
+  $("input").keyup(function(){
+    console.log('check')
+    renderPlayerData(playerCount)
+  });
 }
 
-playerOutContainer.addEventListener("keyup", renderPlayerData);
+function renderPlayerData(count){
+  for (let player = 1; player <= count; player++) {
+    const playerOutElement = playerOutContainer.querySelector(`tr:nth-of-type(${player})`);
+    const playerInElement = playerInContainer.querySelector(`tr:nth-of-type(${player})`);
+    
+    let outTotal = 0;
+    let inTotal = 0;
 
-function renderPlayerData() {
-  for (let player = 1; player <= playerCount; player++) {
-    const playerElement = document.getElementById(`player-${player}`);
-    console.log(playerElement)
+    for (hole = 1; hole < 19; hole++){
+      if(hole < 10){
+        let outHole = playerOutElement.querySelector(`#p-out-${hole}`);
+        outTotal += Number(outHole.value);
+      }
+      if(hole > 10 && hole < 19){
+        let inHole = playerInElement.querySelector(`#p-in-${hole}`);
+        inTotal += Number(inHole.value);
+      }
+    }
+    const outTotalElement = playerOutElement.querySelector(`#p-out-total`);
+    outTotalElement.value = outTotal;
+    const inTotalElement = playerInElement.querySelector('#p-in-total');
+    inTotalElement.value = inTotal;
   }
 }
+
+
+
+
+
+    
+
