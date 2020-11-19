@@ -4,9 +4,9 @@ export const playerOutContainer = document.getElementById(
   "player-out-container"
 );
 export const playerInContainer = document.getElementById("player-in-container");
-export let playerCount = 0;
+let playerCount = 0;
 
-export function renderPlayerData(count) {
+export function renderPlayerScores(count) {
   for (let player = 1; player <= count; player++) {
     const playerOutElement = playerOutContainer.querySelector(
       `tr:nth-of-type(${player})`
@@ -56,10 +56,9 @@ export function newPlayer() {
   playerOutIdElement.id = `player-${playerCount}`;
   playerInIdElement.id = `player-${playerCount}`;
 
-  renderPlayerData(playerCount);
+  renderPlayerScores(playerCount);
   $("input").keyup(function () {
-    console.log("check");
-    renderPlayerData(playerCount);
+    renderPlayerScores(playerCount);
   });
 }
 
