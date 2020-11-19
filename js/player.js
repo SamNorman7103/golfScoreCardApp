@@ -6,12 +6,18 @@ const playerOutContainer = document.getElementById(
 const playerInContainer = document.getElementById("player-in-container");
 let playerCount = 0;
 
+playerOutContainer.addEventListener("keyup", (e) => {
+  const currentPlayerNameElement = e.target.parentNode.parentNode;
+  const name = e.target.value;
+  checkPlayerName(currentPlayerNameElement, name);
+});
+
 function renderPlayerScores(count) {
   for (let player = 1; player <= count; player++) {
-    const playerOutElement = playerOutContainer.querySelector(
+    const outRow = playerOutContainer.querySelector(
       `tr:nth-of-type(${player})`
     );
-    const playerInElement = playerInContainer.querySelector(
+    const inRow = playerInContainer.querySelector(
       `tr:nth-of-type(${player})`
     );
 
@@ -20,19 +26,58 @@ function renderPlayerScores(count) {
 
     for (let hole = 1; hole < 19; hole++) {
       if (hole < 10) {
-        let outHole = playerOutElement.querySelector(`#p-out-${hole}`);
+        let outHole = outRow.querySelector(`#p-out-${hole}`);
         outTotal += Number(outHole.value);
       }
-      if (hole > 10 && hole < 19) {
-        let inHole = playerInElement.querySelector(`#p-in-${hole}`);
+      if (hole > 9 && hole < 19) {
+        let inHole = inRow.querySelector(`#p-in-${hole}`);
         inTotal += Number(inHole.value);
       }
     }
 
-    const outTotalElement = playerOutElement.querySelector(`#p-out-total`);
+    const outTotalElement = outRow.querySelector(`#p-out-total`);
     outTotalElement.innerText = outTotal;
-    const inTotalElement = playerInElement.querySelector("#p-in-total");
+    const inTotalElement = inRow.querySelector("#p-in-total");
     inTotalElement.innerText = inTotal;
+  }
+}
+
+function checkComplete(e){
+  let gameCompleted = false;
+  const player = e.target.parentNode.parentNode;
+  const id = player.id;
+  const playerName = $(`#${id}`).find("textarea").val();
+  const outRow = playerOutContainer.querySelector(`#${id}`)
+  const inRow = playerInContainer.querySelector(`#${id}`);
+  const outTotal = Number(outRow.querySelector(`#p-out-total`).innerText);
+  const inTotal = Number(inRow.querySelector(`#p-in-total`).innerText);
+  const playerScore = outTotal + inTotal;
+  const overall = playerScore - 72;
+
+  for (let hole = 1; hole < 19; hole++) {
+    if (hole < 10) {
+      let outHole = outRow.querySelector(`#p-out-${hole}`);
+      if (outHole.value == ""){
+        return (gameCompleted)
+      }
+    }
+    if (hole > 9 && hole < 19) {
+      let inHole = inRow.querySelector(`#p-in-${hole}`);
+      if (inHole.value == ""){
+        return (gameCompleted)
+      }
+    }
+  }
+  gameCompleted = true;
+  
+  if (gameCompleted == true){
+    if (overall > 0){
+      console.log(`${playerName} you were over par by +${overall} with a score of ${playerScore}. Better luck next time`);
+    } else if (overall < 0){
+      console.log(`${playerName} you were under par by ${overall} with a score of ${playerScore}. On to the PGA!`);
+    } else {
+      console.log(`${playerName} you were on par with a score of ${playerScore}. Well done!`);
+    }
   }
 }
 
@@ -42,11 +87,11 @@ export function newPlayer() {
     return false;
   }
   playerCount++;
-  const playerOutElement = document.importNode(playerOutTemplate.content, true);
-  const playerInElement = document.importNode(playerInTemplate.content, true);
+  const outRow = document.importNode(playerOutTemplate.content, true);
+  const inRow = document.importNode(playerInTemplate.content, true);
 
-  playerOutContainer.appendChild(playerOutElement);
-  playerInContainer.appendChild(playerInElement);
+  playerOutContainer.appendChild(outRow);
+  playerInContainer.appendChild(inRow);
   const playerOutIdElement = playerOutContainer.querySelector(
     `tr:nth-of-type(${playerCount})`
   );
@@ -63,8 +108,9 @@ export function newPlayer() {
       e.preventDefault();
     }
   });
-  $("input").keyup(function () {
+  $("input").keyup(function (e) {
     renderPlayerScores(playerCount);
+    checkComplete(e);
   });
 }
 
@@ -156,8 +202,4 @@ function checkPlayerName(playerElement, name) {
   }
 }
 
-playerOutContainer.addEventListener("keyup", (e) => {
-  const currentPlayerNameElement = e.target.parentNode.parentNode;
-  const name = e.target.value;
-  checkPlayerName(currentPlayerNameElement, name);
-});
+
