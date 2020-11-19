@@ -1,7 +1,7 @@
 export const coursePromise = fetch(
   "https://golf-courses-api.herokuapp.com/courses/"
 ).then((response) => response.json());
-export const courseSelectContainer = document.getElementById("course-select");
+const courseSelectContainer = document.getElementById("course-select");
 
 export function printCourses(data) {
   let html = `
@@ -31,13 +31,13 @@ export function renderCourse(course) {
   }
 }
 
-export function getCourse(course) {
+function getCourse(course) {
   return fetch(
     `https://golf-courses-api.herokuapp.com/courses/${course}`
   ).then((response) => response.json());
 }
 
-export function renderCoursePar(holes) {
+function renderCoursePar(holes) {
   let outTotal = 0;
   let inTotal = 0;
   const parOutTotal = document.getElementById("par-out-total");
@@ -58,7 +58,7 @@ export function renderCoursePar(holes) {
   parInTotal.innerText = inTotal;
 }
 
-export function renderCourseYards(holes) {
+function renderCourseYards(holes) {
   let outTotal = 0;
   let inTotal = 0;
   const yardsOutTotal = document.getElementById("yards-out-total");
@@ -79,7 +79,7 @@ export function renderCourseYards(holes) {
   yardsInTotal.innerText = inTotal;
 }
 
-export function renderCourseHandicap(holes) {
+function renderCourseHandicap(holes) {
   let outTotal = 0;
   let inTotal = 0;
   const handicapOutTotal = document.getElementById("handicap-out-total");
@@ -100,7 +100,7 @@ export function renderCourseHandicap(holes) {
   handicapInTotal.innerText = inTotal;
 }
 
-export function renderCourseData(holes) {
+function renderCourseData(holes) {
   renderCoursePar(holes);
   renderCourseYards(holes);
   renderCourseHandicap(holes);

@@ -1,12 +1,12 @@
-export const playerOutTemplate = document.getElementById("player-out-template");
-export const playerInTemplate = document.getElementById("player-in-template");
-export const playerOutContainer = document.getElementById(
+const playerOutTemplate = document.getElementById("player-out-template");
+const playerInTemplate = document.getElementById("player-in-template");
+const playerOutContainer = document.getElementById(
   "player-out-container"
 );
-export const playerInContainer = document.getElementById("player-in-container");
+const playerInContainer = document.getElementById("player-in-container");
 let playerCount = 0;
 
-export function renderPlayerScores(count) {
+function renderPlayerScores(count) {
   for (let player = 1; player <= count; player++) {
     const playerOutElement = playerOutContainer.querySelector(
       `tr:nth-of-type(${player})`
@@ -57,19 +57,28 @@ export function newPlayer() {
   playerInIdElement.id = `player-${playerCount}`;
 
   renderPlayerScores(playerCount);
+  $("input").keypress(function (e) {
+    var charCode = e.which;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)){
+      e.preventDefault();
+    }
+  });
   $("input").keyup(function () {
     renderPlayerScores(playerCount);
   });
 }
 
-export function checkPlayerName(playerElement, name) {
+function checkPlayerName(playerElement, name) {
   if (playerElement.id == "player-1") {
     for (let opponent = 1; opponent < playerCount; opponent++) {
       if (opponent == 1) {
         opponent++;
       }
       const opponentName = $(`#player-${opponent}`).find("textarea").val();
-      if (
+      if (opponentName == ""){
+        opponent++;
+      }
+      else if (
         name.length == opponentName.length &&
         name.toLowerCase() == opponentName.toLowerCase()
       ) {
@@ -87,7 +96,10 @@ export function checkPlayerName(playerElement, name) {
         opponent++;
       }
       const opponentName = $(`#player-${opponent}`).find("textarea").val();
-      if (
+      if (opponentName == ""){
+        opponent++;
+      }
+      else if (
         name.length == opponentName.length &&
         name.toLowerCase() == opponentName.toLowerCase()
       ) {
@@ -105,7 +117,10 @@ export function checkPlayerName(playerElement, name) {
         opponent++;
       }
       const opponentName = $(`#player-${opponent}`).find("textarea").val();
-      if (
+      if (opponentName == ""){
+        opponent++;
+      }
+      else if (
         name.length == opponentName.length &&
         name.toLowerCase() == opponentName.toLowerCase()
       ) {
@@ -123,7 +138,10 @@ export function checkPlayerName(playerElement, name) {
         break;
       }
       const opponentName = $(`#player-${opponent}`).find("textarea").val();
-      if (
+      if (opponentName == ""){
+        opponent++;
+      }
+      else if (
         name.length == opponentName.length &&
         name.toLowerCase() == opponentName.toLowerCase()
       ) {
