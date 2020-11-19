@@ -74,7 +74,6 @@
       <table id="in-container">
         <tbody>
           <tr class="hole-row">
-            <td class="hidden">Hole</td>
             <td id="hole-10">10</td>
             <td id="hole-11">11</td>
             <td id="hole-12">12</td>
@@ -87,7 +86,6 @@
             <td id="hole-in-total">In</td>
           </tr>
           <tr class="par-row">
-            <td class="hidden">Par</td>
             <td id="par-10"></td>
             <td id="par-11"></td>
             <td id="par-12"></td>
@@ -100,7 +98,6 @@
             <td id="par-in-total"></td>
           </tr>
           <tr class="yardage-row">
-            <td class="hidden">Yards</td>
             <td id="yards-10"></td>
             <td id="yards-11"></td>
             <td id="yards-12"></td>
@@ -116,7 +113,7 @@
         <tbody id="player-in-container"></tbody>
         <tbody>
           <tr class="handicap-row">
-            <td class="hidden">Hcap</td>
+            
             <td id="handicap-10"></td>
             <td id="handicap-11"></td>
             <td id="handicap-12"></td>
@@ -138,6 +135,7 @@
       <tr id="" class="player-row">
         <td>
           <textarea
+            placeholder="Name..."
             name=""
             id=""
             cols="15"
@@ -160,15 +158,6 @@
 
     <template id="player-in-template">
       <tr class="player-row">
-        <td class="hidden">
-          <textarea
-            name=""
-            class="player-name"
-            cols="15"
-            rows="1"
-            maxlength="15"
-          ></textarea>
-        </td>
         <td><input maxlength="2" id="p-in-10" type="text" /></td>
         <td><input maxlength="2" id="p-in-11" type="text" /></td>
         <td><input maxlength="2" id="p-in-12" type="text" /></td>
