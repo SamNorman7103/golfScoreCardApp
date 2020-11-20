@@ -2,15 +2,19 @@ export const coursePromise = fetch(
   "https://golf-courses-api.herokuapp.com/courses/"
 ).then((response) => response.json());
 const courseSelectContainer = document.getElementById("course-select");
-
+export let selectedCourse = {};
 export function printCourses(data) {
   let html = `
-        <h1>Courses</h1>
-        <p><button onclick="course.renderCourse(1)" id="course-1">Course 1</button> ${data.courses[0].name}</p>
-        <p><button onclick="course.renderCourse(2)" id="course-2">Course 2</button> ${data.courses[1].name}</p>
-        <p><button onclick="course.renderCourse(3)" id="course-3">Course 3</button> ${data.courses[2].name}</p>
+        <span>Courses:</span>
+        <span><button onclick="course.renderCourse(1)" id="course-1">${data.courses[0].name}</button> </span>
+        <span><button onclick="course.renderCourse(2)" id="course-2">${data.courses[1].name}</button> </span>
+        <span><button onclick="course.renderCourse(3)" id="course-3">${data.courses[2].name}</button> </span>
         `;
   courseSelectContainer.innerHTML += html;
+}
+
+function teeSelect(tee){
+  
 }
 
 export function renderCourse(course) {
@@ -34,7 +38,9 @@ export function renderCourse(course) {
 function getCourse(course) {
   return fetch(
     `https://golf-courses-api.herokuapp.com/courses/${course}`
-  ).then((response) => response.json());
+  ).then((response) => response.json()
+    
+  );
 }
 
 function renderCoursePar(holes) {
@@ -58,7 +64,8 @@ function renderCoursePar(holes) {
   parInTotal.innerText = inTotal;
 }
 
-function renderCourseYards(holes) {
+export function renderCourseYards(holes, tee) {
+  console.log('clicked');
   let outTotal = 0;
   let inTotal = 0;
   const yardsOutTotal = document.getElementById("yards-out-total");
@@ -66,13 +73,13 @@ function renderCourseYards(holes) {
   for (let i = 0; i < holes.length; i++) {
     if (i < 9) {
       const yardsElement = document.getElementById(`yards-${i + 1}`);
-      yardsElement.innerText = holes[i].teeBoxes[0].yards;
-      outTotal += holes[i].teeBoxes[0].yards;
+      yardsElement.innerText = holes[i].teeBoxes[tee].yards;
+      outTotal += holes[i].teeBoxes[tee].yards;
     }
     if (i > 8) {
       const yardsElement = document.getElementById(`yards-${i + 1}`);
-      yardsElement.innerText = holes[i].teeBoxes[0].yards;
-      inTotal += holes[i].teeBoxes[0].par;
+      yardsElement.innerText = holes[i].teeBoxes[tee].yards;
+      inTotal += holes[i].teeBoxes[tee].par;
     }
   }
   yardsOutTotal.innerText = outTotal;
@@ -101,7 +108,8 @@ function renderCourseHandicap(holes) {
 }
 
 function renderCourseData(holes) {
+  selectedCourse = holes;
   renderCoursePar(holes);
-  renderCourseYards(holes);
+  renderCourseYards(holes, 0);
   renderCourseHandicap(holes);
 }

@@ -1,17 +1,75 @@
+body {
+  margin: 10px;
+}
+#main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#controls {
+  #course-select{
+    padding: 15px;
+    background-color: beige;
+    border-radius: 10px;
+  }
+  #tee-select{
+    margin-top: 25px;
+    background-color: beige;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .controls-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+    button {
+      padding: 5px 1px;
+      min-width: 60px;
+    }
+  }
+}
+
+#add-player-button {
+  padding: 10px;
+  margin: 25px;
+}
 #main-card-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  table, tr, th, td {
+  .columnLabel {
+    font-weight: bold;
+    border: 2px solid black;
+  }
+  .rowLabel {
+    width: 80px;
+    font-weight: bold;
+    border: 2px solid black;
+  }
+  .nameLabel {
+    border: 2px solid black;
+  }
+  table,
+  tr,
+  th,
+  td {
     border: 1px solid black;
   }
+  .top-section, .handicap-row{
+    border: 2px solid black;
+  }
   td {
-    height: 15px;
-    padding: 5px;
+    height: 25px;
+    padding: 2px;
     text-align: center;
     vertical-align: middle;
     word-wrap: break-word;
   }
-  input{
+  input {
+    background-color: transparent;
     padding: 0;
     margin: 0;
     width: 100%;
@@ -22,6 +80,7 @@
     vertical-align: middle;
   }
   textarea {
+    background-color: transparent;
     resize: none;
     text-align: center;
     vertical-align: middle;
@@ -32,13 +91,38 @@
   #main-card-container {
     display: grid;
     grid-template-columns: 1fr;
-    border-color: red;
-    
-    #out-container, #in-container{
-    padding: 5px;
-    padding-top: 15px;
-    margin: 5px;
+    max-width: 410px;
+    #in-container {
+      margin-top: 30px;
+    }
+    #out-container {
+      margin-top: 20px;
     }
   }
 }
+#player-1{
+  background-color: rgb(149, 237, 248);
+}
+#player-2{
+  background-color: rgb(248, 149, 149);
+}
+#player-3{
+  background-color: rgb(152, 248, 149);
+}
+#player-4{
+  background-color: rgb(248, 238, 149);
+}
 
+.handicap-row{
+  background-color: rgb(255, 187, 0);
+  }
+.par-row{
+  background-color: beige;
+}
+.yardage-row{
+  background-color: green;
+  color: white;
+}
+.hole-row{
+  background-color: rgb(255, 187, 0);
+}

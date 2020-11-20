@@ -92,14 +92,14 @@ export function newPlayer() {
 
   playerOutContainer.appendChild(outRow);
   playerInContainer.appendChild(inRow);
-  const playerOutIdElement = playerOutContainer.querySelector(
+  const playerOutElement = playerOutContainer.querySelector(
     `tr:nth-of-type(${playerCount})`
   );
-  const playerInIdElement = playerInContainer.querySelector(
+  const playerInElement = playerInContainer.querySelector(
     `tr:nth-of-type(${playerCount})`
   );
-  playerOutIdElement.id = `player-${playerCount}`;
-  playerInIdElement.id = `player-${playerCount}`;
+  playerOutElement.id = `player-${playerCount}`;
+  playerInElement.id = `player-${playerCount}`;
 
   renderPlayerScores(playerCount);
   $("input").keypress(function (e) {
