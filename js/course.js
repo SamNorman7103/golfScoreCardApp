@@ -5,10 +5,10 @@ const courseSelectContainer = document.getElementById("course-select");
 export let selectedCourse = {};
 export function printCourses(data) {
   let html = `
-        <span>Courses:</span>
-        <span><button onclick="course.renderCourse(1)" id="course-1">${data.courses[0].name}</button> </span>
-        <span><button onclick="course.renderCourse(2)" id="course-2">${data.courses[1].name}</button> </span>
-        <span><button onclick="course.renderCourse(3)" id="course-3">${data.courses[2].name}</button> </span>
+        <span style="padding-top: 10px;">Courses:</span>
+        <button onclick="course.renderCourse(1)" id="course-1">${data.courses[0].name}</button>
+        <button onclick="course.renderCourse(2)" id="course-2">${data.courses[1].name}</button>
+        <button onclick="course.renderCourse(3)" id="course-3">${data.courses[2].name}</button>
         `;
   courseSelectContainer.innerHTML += html;
 }
@@ -35,7 +35,7 @@ export function renderCourse(course) {
   }
 }
 
-function getCourse(course) {
+export function getCourse(course) {
   return fetch(
     `https://golf-courses-api.herokuapp.com/courses/${course}`
   ).then((response) => response.json()
@@ -65,7 +65,6 @@ function renderCoursePar(holes) {
 }
 
 export function renderCourseYards(holes, tee) {
-  console.log('clicked');
   let outTotal = 0;
   let inTotal = 0;
   const yardsOutTotal = document.getElementById("yards-out-total");
@@ -79,7 +78,7 @@ export function renderCourseYards(holes, tee) {
     if (i > 8) {
       const yardsElement = document.getElementById(`yards-${i + 1}`);
       yardsElement.innerText = holes[i].teeBoxes[tee].yards;
-      inTotal += holes[i].teeBoxes[tee].par;
+      inTotal += holes[i].teeBoxes[tee].yards;
     }
   }
   yardsOutTotal.innerText = outTotal;

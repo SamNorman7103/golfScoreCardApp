@@ -1,11 +1,12 @@
 body {
-  margin: 10px;
+  margin: 2px;
 }
 
 #main-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #controls #course-select {
@@ -22,17 +23,21 @@ body {
 #controls .controls-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
 }
-#controls .controls-item button {
-  padding: 5px 1px;
-  min-width: 60px;
+
+#game-finished-message {
+  padding-top: 20px;
+  border: none;
+  height: 60px;
+  color: red;
+  font-weight: bold;
 }
 
 #add-player-button {
   padding: 10px;
   margin: 25px;
+  width: 200px;
 }
 
 #main-card-container {
@@ -48,7 +53,7 @@ body {
   font-weight: bold;
   border: 2px solid black;
 }
-#main-card-container .nameLabel {
+#main-card-container #par-10, #main-card-container #yards-10, #main-card-container #handicap-10 {
   border: 2px solid black;
 }
 #main-card-container table,
@@ -62,7 +67,6 @@ body {
 }
 #main-card-container td {
   height: 25px;
-  padding: 2px;
   text-align: center;
   vertical-align: middle;
   word-wrap: break-word;
@@ -89,13 +93,16 @@ body {
   #main-card-container {
     display: grid;
     grid-template-columns: 1fr;
-    max-width: 410px;
+    min-width: 370px;
+    max-width: 370px;
   }
   #main-card-container #in-container {
-    margin-top: 30px;
+    margin-top: 20px;
+    max-width: 370px;
   }
   #main-card-container #out-container {
     margin-top: 20px;
+    max-width: 370px;
   }
 }
 #player-1 {

@@ -1,3 +1,4 @@
+import { selectedCourse } from "./course.js";
 const playerOutTemplate = document.getElementById("player-out-template");
 const playerInTemplate = document.getElementById("player-in-template");
 const playerOutContainer = document.getElementById(
@@ -72,11 +73,21 @@ function checkComplete(e){
   
   if (gameCompleted == true){
     if (overall > 0){
-      console.log(`${playerName} you were over par by +${overall} with a score of ${playerScore}. Better luck next time`);
+      console.log($("#game-finished-message"))
+      $("#game-finished-message").text(`${playerName} you were over par by +${overall} with a score of ${playerScore}. Better luck next time`);
+      setTimeout(function() { 
+        $("#game-finished-message").empty();
+    }, 2000);
     } else if (overall < 0){
-      console.log(`${playerName} you were under par by ${overall} with a score of ${playerScore}. On to the PGA!`);
+      $("#game-finished-message").text(`${playerName} you were under par by ${overall} with a score of ${playerScore}. On to the PGA!`);
+      setTimeout(function() { 
+        $("#game-finished-message").empty();
+    }, 2000);
     } else {
-      console.log(`${playerName} you were on par with a score of ${playerScore}. Well done!`);
+      $("#game-finished-message").text(`${playerName} you were on par with a score of ${playerScore}. Well done!`);
+      setTimeout(function() { 
+        $("#game-finished-message").empty();
+    }, 2000);
     }
   }
 }
@@ -104,7 +115,8 @@ export function newPlayer() {
   renderPlayerScores(playerCount);
   $("input").keypress(function (e) {
     var charCode = e.which;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)){
+    if ((charCode > 31 && (charCode < 48 || charCode > 57)) || Object.keys(course.selectedCourse).length == 0
+    ){
       e.preventDefault();
     }
   });
@@ -130,10 +142,10 @@ function checkPlayerName(playerElement, name) {
       ) {
         name = "";
         $("#player-1").find("textarea").val(name);
-        $("#player-1").find("textarea").attr("placeholder", "Name is taken");
+        $("#player-1").find("textarea").attr("placeholder", "Name taken");
         setTimeout(function () {
-          $("#player-1").find("textarea").attr("placeholder", "");
-        }, 1750);
+          $("#player-1").find("textarea").attr("placeholder", "Name...");
+        }, 450);
       }
     }
   } else if (playerElement.id == "player-2") {
@@ -151,10 +163,10 @@ function checkPlayerName(playerElement, name) {
       ) {
         name = "";
         $("#player-2").find("textarea").val(name);
-        $("#player-2").find("textarea").attr("placeholder", "Name is taken");
+        $("#player-2").find("textarea").attr("placeholder", "Name taken");
         setTimeout(function () {
-          $("#player-2").find("textarea").attr("placaeholder", "");
-        });
+          $("#player-2").find("textarea").attr("placeholder", "Name...");
+        }, 450);
       }
     }
   } else if (playerElement.id == "player-3") {
@@ -172,10 +184,10 @@ function checkPlayerName(playerElement, name) {
       ) {
         name = "";
         $("#player-3").find("textarea").val(name);
-        $("#player-3").find("textarea").attr("placeholder", "Name is taken");
+        $("#player-3").find("textarea").attr("placeholder", "Name taken");
         setTimeout(function () {
-          $("#player-3").find("textarea").attr("placaeholder", "");
-        });
+          $("#player-3").find("textarea").attr("placeholder", "Name...");
+        }, 450);
       }
     }
   } else if (playerElement.id == "player-4") {
@@ -193,10 +205,10 @@ function checkPlayerName(playerElement, name) {
       ) {
         name = "";
         $("#player-4").find("textarea").val(name);
-        $("#player-4").find("textarea").attr("placeholder", "Name is taken");
+        $("#player-4").find("textarea").attr("placeholder", "Name taken");
         setTimeout(function () {
-          $("#player-4").find("textarea").attr("placaeholder", "");
-        });
+          $("#player-4").find("textarea").attr("placeholder", "Name...");
+        }, 450);
       }
     }
   }
