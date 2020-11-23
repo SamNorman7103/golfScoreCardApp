@@ -77,17 +77,17 @@ function checkComplete(e){
       $("#game-finished-message").text(`${playerName} you were over par by +${overall} with a score of ${playerScore}. Better luck next time`);
       setTimeout(function() { 
         $("#game-finished-message").empty();
-    }, 2000);
+    }, 4000);
     } else if (overall < 0){
       $("#game-finished-message").text(`${playerName} you were under par by ${overall} with a score of ${playerScore}. On to the PGA!`);
       setTimeout(function() { 
         $("#game-finished-message").empty();
-    }, 2000);
+    }, 4000);
     } else {
       $("#game-finished-message").text(`${playerName} you were on par with a score of ${playerScore}. Well done!`);
       setTimeout(function() { 
         $("#game-finished-message").empty();
-    }, 2000);
+    }, 4000);
     }
   }
 }
